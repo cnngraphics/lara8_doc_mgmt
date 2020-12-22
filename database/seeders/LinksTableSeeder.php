@@ -4,17 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class LinksTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
+        //
+        \App\Models\Link::factory(15)->create();
         // \App\Models\User::factory(10)->create();
-        $this->call(LinksTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
     }
 }
