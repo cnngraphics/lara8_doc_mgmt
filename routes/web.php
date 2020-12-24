@@ -13,12 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/', function(){
+    $links= \App\Models\Link::all();
+
+    // return view('welcome', ['links'=>$links]);
+    return view('welcome')->with('links', $links);
+
+});
+
+Route::get('/submit', function(){
+    return view('submit');
+});
+
 
 require __DIR__.'/auth.php';
