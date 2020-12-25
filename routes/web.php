@@ -38,6 +38,7 @@ Route::get('/submit', function(){
     return view('submit');
 });
 
+
 Route::post('/submit', function(Request $request){
     $data = $request->validate([
         'title'=>'required|max:255',
@@ -56,6 +57,20 @@ Route::post('/submit', function(Request $request){
     //
     //    return $link;
 });
+
+// Route::get('/tasks', function(){
+//     return view('submit');
+// });
+
+Route::get('/tasks', function(){
+    $tasks = App\Models\Task::all();
+    return view('tasks')->with('tasks', $tasks);
+})->middleware(['auth'])->name('tasks');
+
+Route::get('/documents', function(){
+    $documents = App\Models\Document::all();
+    return view('documents')->with('documents', $documents);
+})->middleware(['auth'])->name('documents');
 
 
 require __DIR__.'/auth.php';
